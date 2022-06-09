@@ -15,7 +15,7 @@ class MyApp extends StatelessWidget {
       title: 'Distance-Caclculator',
       debugShowCheckedModeBanner: false,
       theme: ThemeData.dark(),
-      home: Scaffold(body: HomeScreen()),
+      home: const Scaffold(body: HomeScreen()),
     );
   }
 }
