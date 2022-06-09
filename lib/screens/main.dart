@@ -1,4 +1,5 @@
 import 'package:distance_calculator/screens/home_screen.dart';
+import 'package:distance_calculator/screens/sign_in.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -11,6 +12,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      title: 'Distance-Caclculator',
+      debugShowCheckedModeBanner: false,
       theme: ThemeData.dark(),
       home: Scaffold(body: HomeScreen()),
     );
