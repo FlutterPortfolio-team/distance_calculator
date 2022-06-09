@@ -1,8 +1,12 @@
 import 'package:http/http.dart' as http;
 import 'dart:convert';
+import 'package:geocoding/geocoding.dart';
 
 const String apiKey = '';
-const String url = '';
+late String destination;
+late String origin;
+const String url =
+    'https://maps.googleapis.com/maps/api/distancematrix/json?destinations=$destination&origins=$origin&units=imperial&key=$apiKey';
 
 class Networking {
   Future getData() async {
