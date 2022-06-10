@@ -20,12 +20,12 @@ class _HomeScreenState extends State<HomeScreen> {
       body: Container(
         padding: const EdgeInsets.only(left: 20.0, right: 20.0),
         // We can actually use this decoration property but if it is out of design you ac remove it
-        // decoration: const BoxDecoration(
-        //   image: DecorationImage(
-        //     image: AssetImage('images/city_background.jpg'),
-        //     fit: BoxFit.cover,
-        //   ),
-        // ),
+        decoration: const BoxDecoration(
+          image: DecorationImage(
+            image: AssetImage('images/city_background.jpg'),
+            fit: BoxFit.cover,
+          ),
+        ),
         constraints: const BoxConstraints.expand(),
         child: SafeArea(
           child: Column(
