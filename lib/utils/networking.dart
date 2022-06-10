@@ -13,6 +13,7 @@ class Networking {
     http.Response response = await http.get(Uri.parse(url));
     if (response.statusCode == 200) {
       var data = jsonDecode(response.body);
+      String distance = data['rows'][0]['elements'][0]['distance']['text'];
       return jsonDecode(data);
     } else {
       print(response.statusCode);
