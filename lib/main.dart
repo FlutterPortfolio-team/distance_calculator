@@ -16,7 +16,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Distance-Caclculator',
       debugShowCheckedModeBanner: false,
-      theme: ThemeData.dark(),
+      // theme: ThemeData.dark(),
       home: const Scaffold(body: MapView()),
     );
   }
