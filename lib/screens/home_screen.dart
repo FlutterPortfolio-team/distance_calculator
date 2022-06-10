@@ -1,4 +1,5 @@
 import 'package:distance_calculator/constants.dart';
+import 'package:distance_calculator/utils/networking.dart';
 import 'package:flutter/material.dart';
 import 'package:geocoding/geocoding.dart';
 
@@ -12,6 +13,26 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   final city1TextEditController = TextEditingController();
   final city2TextEditController = TextEditingController();
+  late String distance;
+
+  void getData() async {
+    try {
+      var data = await Networking()
+          .getData(city1TextEditController.text, city2TextEditController.text);
+      setState(() {
+        distance = data['rows'][0]['elements'][0]['distance']['text'];
+      });
+    } catch (e) {
+      print(e);
+    }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    getData();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -71,7 +92,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   builder: (context) => AlertDialog(
                     title: const Text('Result'),
                     content: Text(
-                        'Distance between ${city1TextEditController.text} and ${city2TextEditController.text} is ans.'),
+                        'Distance between ${city1TextEditController.text} and ${city2TextEditController.text} is $distance.'),
                     actions: [
                       TextButton(
                         onPressed: () => Navigator.pop(context, 'OK'),
