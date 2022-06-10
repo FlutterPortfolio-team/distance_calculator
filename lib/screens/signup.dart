@@ -306,6 +306,18 @@ class _SignupScreenState extends State<SignupScreen> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        appBar: AppBar(
+          backgroundColor: Colors.lightBlueAccent,
+          title: const Text(
+            'DISTANCE-CALCULATOR',
+            style: TextStyle(
+              color: Colors.white,
+              fontWeight: FontWeight.bold,
+              letterSpacing: 1.5,
+              fontSize: 18.0,
+            ),
+          ),
+        ),
         body: Stack(children: <Widget>[
           Container(
             height: double.infinity,

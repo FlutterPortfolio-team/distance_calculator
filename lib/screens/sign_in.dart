@@ -229,6 +229,18 @@ class _SigninScreenState extends State<SigninScreen> {
     const google = 'assets/iconGoogle.png';
     return SafeArea(
       child: Scaffold(
+        appBar: AppBar(
+          backgroundColor: Colors.lightBlueAccent,
+          title: const Text(
+            'DISTANCE-CALCULATOR',
+            style: TextStyle(
+              color: Colors.white,
+              fontWeight: FontWeight.bold,
+              letterSpacing: 1.5,
+              fontSize: 18.0,
+            ),
+          ),
+        ),
         body: Stack(
           children: <Widget>[
             Container(
