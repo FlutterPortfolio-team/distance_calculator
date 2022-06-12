@@ -1,6 +1,8 @@
 import 'package:distance_calculator/screens/signup.dart';
 import 'package:flutter/material.dart';
 
+import '../helpers/router.dart';
+
 class SigninScreen extends StatefulWidget {
   const SigninScreen({Key? key}) : super(key: key);
 
@@ -17,7 +19,7 @@ class _SigninScreenState extends State<SigninScreen> {
         const Text(
           'Email',
           style: TextStyle(
-              color: Colors.white, fontWeight: FontWeight.bold, fontSize: 18.0),
+              color: Colors.black87, fontWeight: FontWeight.bold, fontSize: 17.0),
         ),
         const SizedBox(
           height: 10.0,
@@ -25,7 +27,7 @@ class _SigninScreenState extends State<SigninScreen> {
         Container(
           alignment: Alignment.centerLeft,
           decoration: BoxDecoration(
-              color: Colors.lightBlueAccent,
+              color: Colors.grey.shade100,
               borderRadius: BorderRadius.circular(10.0),
               boxShadow: const [
                 BoxShadow(
@@ -35,7 +37,7 @@ class _SigninScreenState extends State<SigninScreen> {
                 )
               ]),
           height: 60.0,
-          child: const TextField(
+          child:  TextField(
             style: TextStyle(
               color: Colors.white,
             ),
@@ -44,11 +46,11 @@ class _SigninScreenState extends State<SigninScreen> {
               contentPadding: EdgeInsets.only(top: 14.0),
               prefixIcon: Icon(
                 Icons.email,
-                color: Colors.white,
+                color: Colors.blue.shade400,
               ),
               hintText: 'Enter your Email',
               hintStyle: TextStyle(
-                color: Colors.white,
+                color: Colors.black45,
               ),
             ),
           ),
@@ -64,7 +66,7 @@ class _SigninScreenState extends State<SigninScreen> {
         const Text(
           'Password',
           style: TextStyle(
-              color: Colors.white, fontWeight: FontWeight.bold, fontSize: 15.0),
+              color: Colors.black87, fontWeight: FontWeight.bold, fontSize: 17.0),
         ),
         const SizedBox(
           height: 10.0,
@@ -72,7 +74,7 @@ class _SigninScreenState extends State<SigninScreen> {
         Container(
           alignment: Alignment.centerLeft,
           decoration: BoxDecoration(
-              color: Colors.lightBlueAccent,
+              color: Colors.grey.shade100,
               borderRadius: BorderRadius.circular(10.0),
               boxShadow: const [
                 BoxShadow(
@@ -82,7 +84,7 @@ class _SigninScreenState extends State<SigninScreen> {
                 )
               ]),
           height: 60.0,
-          child: const TextField(
+          child:  TextField(
             style: TextStyle(color: Colors.white),
             obscureText: true,
             decoration: InputDecoration(
@@ -90,11 +92,11 @@ class _SigninScreenState extends State<SigninScreen> {
               contentPadding: EdgeInsets.only(top: 14.0),
               prefixIcon: Icon(
                 Icons.lock,
-                color: Colors.white,
+                color: Colors.blue.shade400,
               ),
               hintText: 'Enter your Password',
               hintStyle: TextStyle(
-                color: Colors.white,
+                color: Colors.black45,
               ),
             ),
           ),
@@ -111,7 +113,7 @@ class _SigninScreenState extends State<SigninScreen> {
         child: const Text(
           'Forgot Password ?',
           style: TextStyle(
-              color: Colors.white, fontWeight: FontWeight.bold, fontSize: 15.0),
+              color: Colors.black54, fontWeight: FontWeight.bold, fontSize: 15.0),
         ),
       ),
     );
@@ -119,14 +121,14 @@ class _SigninScreenState extends State<SigninScreen> {
 
   Widget _buildRememberMeCheckbox() {
     return Container(
-      height: 20.0,
+      height: 15.0,
       child: Row(
         children: <Widget>[
           Theme(
-            data: ThemeData(unselectedWidgetColor: Colors.white),
+            data: ThemeData(unselectedWidgetColor: Colors.black),
             child: Checkbox(
               value: _rememberMe,
-              checkColor: Colors.green,
+              checkColor: Colors.blue,
               activeColor: Colors.white,
               onChanged: (value) {
                 setState(() {
@@ -138,9 +140,9 @@ class _SigninScreenState extends State<SigninScreen> {
           const Text(
             'Remember me',
             style: TextStyle(
-                color: Colors.white,
-                fontWeight: FontWeight.bold,
-                fontSize: 18.0),
+                color: Colors.black87,
+                fontWeight: FontWeight.w500,
+                fontSize: 15.0),
           ),
         ],
       ),
@@ -157,14 +159,15 @@ class _SigninScreenState extends State<SigninScreen> {
             padding: MaterialStateProperty.all(const EdgeInsets.all(15.0)),
             shape: MaterialStateProperty.all(RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(30.0))),
-            backgroundColor: MaterialStateProperty.all(Colors.white)),
+            backgroundColor: MaterialStateProperty.all(Colors.blue.shade400)),
         onPressed: (() {
           FocusScope.of(context).unfocus();
+            Navigator.of(context).pushNamed(Routes.homeRoute);
         }),
         child: const Text(
           'LOGIN',
           style: TextStyle(
-              color: Colors.lightBlueAccent,
+              color: Colors.white,
               letterSpacing: 1.5,
               fontSize: 18.0,
               fontWeight: FontWeight.bold),
@@ -178,15 +181,15 @@ class _SigninScreenState extends State<SigninScreen> {
       children: const <Widget>[
         Text(
           '-OR-',
-          style: TextStyle(color: Colors.white, fontWeight: FontWeight.w400),
+          style: TextStyle(color: Colors.black54, fontWeight: FontWeight.w400),
         ),
         SizedBox(
-          height: 20.0,
+          height: 30.0,
         ),
         Text(
           'Sign in with',
           style: TextStyle(
-              color: Colors.white, fontWeight: FontWeight.bold, fontSize: 18.0),
+              color: Colors.black54,fontWeight: FontWeight.bold, fontSize: 15.0),
         ),
       ],
     );
@@ -199,21 +202,21 @@ class _SigninScreenState extends State<SigninScreen> {
             MaterialPageRoute(builder: ((context) => const SignupScreen())));
       },
       child: RichText(
-        text: const TextSpan(
+        text:  TextSpan(
           children: [
             TextSpan(
               text: 'Don\'t have an Account?',
               style: TextStyle(
-                color: Colors.white,
-                fontSize: 18.0,
+                color: Colors.black54,
+                fontSize: 15.0,
                 fontWeight: FontWeight.w400,
               ),
             ),
             TextSpan(
               text: ' Sign Up',
               style: TextStyle(
-                color: Colors.white,
-                fontSize: 18.0,
+                color: Colors.blue.shade400,
+                fontSize: 15.0,
                 fontWeight: FontWeight.bold,
               ),
             ),
@@ -246,14 +249,14 @@ class _SigninScreenState extends State<SigninScreen> {
             Container(
               height: double.infinity,
               width: double.infinity,
-              decoration: const BoxDecoration(color: Colors.lightBlueAccent),
+              decoration: const BoxDecoration(color: Colors.white),
             ),
             Container(
               height: double.infinity,
               child: SingleChildScrollView(
                 padding: const EdgeInsets.symmetric(
                   horizontal: 40.0,
-                  vertical: 120,
+                  vertical: 60,
                 ),
                 child: Column(
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -261,7 +264,7 @@ class _SigninScreenState extends State<SigninScreen> {
                     const Text(
                       'Sign In',
                       style: TextStyle(
-                        color: Colors.white,
+                        color: Colors.black87,
                         fontSize: 30.0,
                         fontWeight: FontWeight.bold,
                       ),
@@ -276,6 +279,7 @@ class _SigninScreenState extends State<SigninScreen> {
                     _buildPasswordTF(),
                     _buildForgotPasswordBtn(),
                     _buildRememberMeCheckbox(),
+                    SizedBox(height: 20,),
                     _buildLoginBtn(),
                     _buildSignInWithText(),
                     Padding(
@@ -286,10 +290,10 @@ class _SigninScreenState extends State<SigninScreen> {
                           GestureDetector(
                             onTap: () {},
                             child: Container(
-                              height: 60.0,
-                              width: 60.0,
+                              height: 40.0,
+                              width: 40.0,
                               decoration: const BoxDecoration(
-                                  shape: BoxShape.circle,
+                                  // shape: BoxShape.,
                                   color: Colors.white,
                                   boxShadow: [
                                     BoxShadow(
@@ -305,10 +309,10 @@ class _SigninScreenState extends State<SigninScreen> {
                           GestureDetector(
                             onTap: () {},
                             child: Container(
-                              height: 60.0,
-                              width: 60.0,
+                              height: 40.0,
+                              width: 40.0,
                               decoration: const BoxDecoration(
-                                shape: BoxShape.circle,
+                                // shape: BoxShape.circle,
                                 color: Colors.white,
                                 boxShadow: [
                                   BoxShadow(
@@ -326,6 +330,7 @@ class _SigninScreenState extends State<SigninScreen> {
                         ],
                       ),
                     ),
+                    SizedBox(height: 15.0,),
                     _buildSignupBtn(),
                   ],
                 ),

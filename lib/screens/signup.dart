@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../helpers/router.dart';
+
 class SignupScreen extends StatefulWidget {
   const SignupScreen({Key? key}) : super(key: key);
 
@@ -15,7 +17,7 @@ class _SignupScreenState extends State<SignupScreen> {
         const Text(
           'Full Name',
           style: TextStyle(
-              color: Colors.white, fontWeight: FontWeight.bold, fontSize: 18.0),
+              color: Colors.black87, fontWeight: FontWeight.bold, fontSize: 17.0),
         ),
         const SizedBox(
           height: 10.0,
@@ -23,7 +25,7 @@ class _SignupScreenState extends State<SignupScreen> {
         Container(
           alignment: Alignment.centerLeft,
           decoration: BoxDecoration(
-              color: Colors.lightBlueAccent,
+              color: Colors.grey.shade100,
               borderRadius: BorderRadius.circular(10.0),
               boxShadow: const [
                 BoxShadow(
@@ -33,20 +35,20 @@ class _SignupScreenState extends State<SignupScreen> {
                 )
               ]),
           height: 60.0,
-          child: const TextField(
+          child:  TextField(
             style: TextStyle(
-              color: Colors.white,
+              color: Colors.black45,
             ),
             decoration: InputDecoration(
               border: InputBorder.none,
               contentPadding: EdgeInsets.only(top: 14.0),
               prefixIcon: Icon(
                 Icons.person,
-                color: Colors.white,
+                color: Colors.blue.shade400,
               ),
               hintText: 'Enter your Name',
               hintStyle: TextStyle(
-                color: Colors.white,
+                color: Colors.black45,
               ),
             ),
           ),
@@ -62,7 +64,7 @@ class _SignupScreenState extends State<SignupScreen> {
         const Text(
           'Phone No',
           style: TextStyle(
-              color: Colors.white, fontWeight: FontWeight.bold, fontSize: 18.0),
+              color: Colors.black87, fontWeight: FontWeight.bold, fontSize: 17.0),
         ),
         const SizedBox(
           height: 10.0,
@@ -70,7 +72,7 @@ class _SignupScreenState extends State<SignupScreen> {
         Container(
           alignment: Alignment.centerLeft,
           decoration: BoxDecoration(
-              color: Colors.lightBlueAccent,
+              color: Colors.grey.shade100,
               borderRadius: BorderRadius.circular(10.0),
               boxShadow: const [
                 BoxShadow(
@@ -80,20 +82,20 @@ class _SignupScreenState extends State<SignupScreen> {
                 )
               ]),
           height: 60.0,
-          child: const TextField(
+          child:  TextField(
             style: TextStyle(
-              color: Colors.white,
+              color: Colors.black45,
             ),
             decoration: InputDecoration(
               border: InputBorder.none,
               contentPadding: EdgeInsets.only(top: 14.0),
               prefixIcon: Icon(
                 Icons.phone,
-                color: Colors.white,
+                color: Colors.blue.shade400,
               ),
               hintText: 'Enter your Phone no',
               hintStyle: TextStyle(
-                color: Colors.white,
+                color: Colors.black45,
               ),
             ),
           ),
@@ -109,7 +111,7 @@ class _SignupScreenState extends State<SignupScreen> {
         const Text(
           'Email',
           style: TextStyle(
-              color: Colors.white, fontWeight: FontWeight.bold, fontSize: 18.0),
+              color: Colors.black87, fontWeight: FontWeight.bold, fontSize: 17.0),
         ),
         const SizedBox(
           height: 10.0,
@@ -117,7 +119,7 @@ class _SignupScreenState extends State<SignupScreen> {
         Container(
           alignment: Alignment.centerLeft,
           decoration: BoxDecoration(
-              color: Colors.lightBlueAccent,
+              color: Colors.grey.shade100,
               borderRadius: BorderRadius.circular(10.0),
               boxShadow: const [
                 BoxShadow(
@@ -127,20 +129,20 @@ class _SignupScreenState extends State<SignupScreen> {
                 )
               ]),
           height: 60.0,
-          child: const TextField(
+          child:  TextField(
             style: TextStyle(
-              color: Colors.white,
+              color: Colors.black45,
             ),
             decoration: InputDecoration(
               border: InputBorder.none,
               contentPadding: EdgeInsets.only(top: 14.0),
               prefixIcon: Icon(
                 Icons.email,
-                color: Colors.white,
+                color: Colors.blue.shade400,
               ),
               hintText: 'Enter your Email',
               hintStyle: TextStyle(
-                color: Colors.white,
+                color: Colors.black45,
               ),
             ),
           ),
@@ -156,7 +158,7 @@ class _SignupScreenState extends State<SignupScreen> {
         const Text(
           'Password',
           style: TextStyle(
-              color: Colors.white, fontWeight: FontWeight.bold, fontSize: 18.0),
+              color: Colors.black87, fontWeight: FontWeight.bold, fontSize: 17.0),
         ),
         const SizedBox(
           height: 10.0,
@@ -164,7 +166,7 @@ class _SignupScreenState extends State<SignupScreen> {
         Container(
           alignment: Alignment.centerLeft,
           decoration: BoxDecoration(
-              color: Colors.lightBlueAccent,
+              color: Colors.grey.shade100,
               borderRadius: BorderRadius.circular(10.0),
               boxShadow: const [
                 BoxShadow(
@@ -174,9 +176,9 @@ class _SignupScreenState extends State<SignupScreen> {
                 )
               ]),
           height: 60.0,
-          child: const TextField(
+          child:  TextField(
             style: TextStyle(
-              color: Colors.white,
+              color: Colors.black45,
             ),
             obscureText: true,
             decoration: InputDecoration(
@@ -184,11 +186,11 @@ class _SignupScreenState extends State<SignupScreen> {
               contentPadding: EdgeInsets.only(top: 14.0),
               prefixIcon: Icon(
                 Icons.lock,
-                color: Colors.white,
+                color: Colors.blue.shade400,
               ),
               hintText: 'Enter your Password',
               hintStyle: TextStyle(
-                color: Colors.white,
+                color: Colors.black45,
               ),
             ),
           ),
@@ -204,7 +206,7 @@ class _SignupScreenState extends State<SignupScreen> {
         const Text(
           'Confirm Password',
           style: TextStyle(
-              color: Colors.white, fontWeight: FontWeight.bold, fontSize: 18.0),
+              color: Colors.black87, fontWeight: FontWeight.bold, fontSize: 17.0),
         ),
         const SizedBox(
           height: 10.0,
@@ -212,7 +214,7 @@ class _SignupScreenState extends State<SignupScreen> {
         Container(
           alignment: Alignment.centerLeft,
           decoration: BoxDecoration(
-              color: Colors.lightBlueAccent,
+              color: Colors.grey.shade100,
               borderRadius: BorderRadius.circular(10.0),
               boxShadow: const [
                 BoxShadow(
@@ -222,9 +224,9 @@ class _SignupScreenState extends State<SignupScreen> {
                 )
               ]),
           height: 60.0,
-          child: const TextField(
+          child:  TextField(
             style: TextStyle(
-              color: Colors.white,
+              color: Colors.black45,
             ),
             obscureText: true,
             decoration: InputDecoration(
@@ -232,11 +234,11 @@ class _SignupScreenState extends State<SignupScreen> {
               contentPadding: EdgeInsets.only(top: 14.0),
               prefixIcon: Icon(
                 Icons.lock,
-                color: Colors.white,
+                color: Colors.blue.shade400,
               ),
               hintText: 'Confirm Password',
               hintStyle: TextStyle(
-                color: Colors.white,
+                color: Colors.black45,
               ),
             ),
           ),
@@ -255,15 +257,15 @@ class _SignupScreenState extends State<SignupScreen> {
             padding: MaterialStateProperty.all(const EdgeInsets.all(15.0)),
             shape: MaterialStateProperty.all(RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(30.0))),
-            backgroundColor: MaterialStateProperty.all(Colors.white)),
+            backgroundColor: MaterialStateProperty.all(Colors.blue.shade400)),
         onPressed: (() {
           FocusScope.of(context).unfocus();
-          Navigator.of(context).pop();
+            Navigator.of(context).pushNamed(Routes.homeRoute);
         }),
         child: const Text(
           'REGISTER',
           style: TextStyle(
-              color: Colors.lightBlueAccent,
+              color: Colors.white,
               letterSpacing: 1.5,
               fontSize: 18.0,
               fontWeight: FontWeight.bold),
@@ -277,26 +279,32 @@ class _SignupScreenState extends State<SignupScreen> {
       onTap: () {
         Navigator.of(context).pop();
       },
-      child: RichText(
-        text: const TextSpan(
-          children: [
-            TextSpan(
-              text: 'Have an Account?',
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 18.0,
-                fontWeight: FontWeight.w400,
+      child: GestureDetector(
+        onTap: () {
+           Navigator.of(context).pushNamed(Routes.loginRoute);
+        } ,
+        child: RichText(
+          text:  TextSpan(
+          
+            children: [
+              TextSpan(
+                text: 'Have an Account?',
+                style: TextStyle(
+                  color: Colors.black45,
+                  fontSize: 15.0,
+                  fontWeight: FontWeight.w400,
+                ),
               ),
-            ),
-            TextSpan(
-              text: ' Sign In',
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: 18.0,
-                fontWeight: FontWeight.bold,
+              TextSpan(
+                text: ' Sign In',
+                style: TextStyle(
+                  color: Colors.blue.shade500,
+                  fontSize: 15.0,
+                  fontWeight: FontWeight.bold,
+                ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );
@@ -306,75 +314,71 @@ class _SignupScreenState extends State<SignupScreen> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
-        appBar: AppBar(
-          backgroundColor: Colors.lightBlueAccent,
-          title: const Text(
-            'DISTANCE-CALCULATOR',
-            style: TextStyle(
-              color: Colors.white,
-              fontWeight: FontWeight.bold,
-              letterSpacing: 1.5,
-              fontSize: 18.0,
+        body: GestureDetector(
+          onTap: () {
+            FocusScopeNode currentFocus = FocusScope.of(context);
+            if (!currentFocus.hasPrimaryFocus) {
+              currentFocus.unfocus();
+            }
+          },
+          child: Stack(children: <Widget>[
+            Container(
+              height: double.infinity,
+              width: double.infinity,
+              decoration:  BoxDecoration(color: Colors.white),
             ),
-          ),
-        ),
-        body: Stack(children: <Widget>[
-          Container(
-            height: double.infinity,
-            width: double.infinity,
-            decoration: const BoxDecoration(color: Colors.lightBlueAccent),
-          ),
-          Container(
-            height: double.infinity,
-            child: SingleChildScrollView(
-              padding: const EdgeInsets.symmetric(
-                horizontal: 40.0,
-                vertical: 120.0,
-              ),
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  const Text(
-                    'Sign Up',
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 30.0,
-                      fontWeight: FontWeight.bold,
+            Container(
+              height: double.infinity,
+              child: SingleChildScrollView(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 40.0,
+                  vertical: 40.0,
+                ),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: <Widget>[
+                    const Text(
+                      'Sign Up',
+                      style: TextStyle(
+                        color: Colors.black87,
+                        fontSize: 30.0,
+                        fontWeight: FontWeight.bold,
+                      ),
                     ),
-                  ),
-                  const SizedBox(
-                    height: 30.0,
-                  ),
-                  _buildFullNameTS(),
-                  const SizedBox(
-                    height: 30.0,
-                  ),
-                  _buildPhoneNoTS(),
-                  const SizedBox(
-                    height: 30.0,
-                  ),
-                  _buildEmailTS(),
-                  const SizedBox(
-                    height: 30.0,
-                  ),
-                  _buildPasswordTS(),
-                  const SizedBox(
-                    height: 30.0,
-                  ),
-                  _buildConfirmPasswordTS(),
-                  const SizedBox(
-                    height: 30.0,
-                  ),
-                  _buildRegisterBtn(),
-                  const SizedBox(
-                    height: 60,
-                  ),
-                  _buildSignInBtn()
-                ],
+                    const SizedBox(
+                      height: 30.0,
+                    ),
+                    _buildFullNameTS(),
+                    const SizedBox(
+                      height: 30.0,
+                    ),
+                    _buildPhoneNoTS(),
+                    const SizedBox(
+                      height: 30.0,
+                    ),
+                    _buildEmailTS(),
+                    const SizedBox(
+                      height: 30.0,
+                    ),
+                    _buildPasswordTS(),
+                    const SizedBox(
+                      height: 30.0,
+                    ),
+                    _buildConfirmPasswordTS(),
+                    const SizedBox(
+                      height: 30.0,
+                    ),
+                    _buildRegisterBtn(),
+                    const SizedBox(
+                      height: 40,
+                    ),
+                    _buildSignInBtn()
+                  ],
+                ),
               ),
-            ),
-          )
-        ]),
+            )
+          ]),
+        ),
       ),
     );
   }
