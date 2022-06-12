@@ -39,7 +39,7 @@ class _SigninScreenState extends State<SigninScreen> {
           height: 60.0,
           child:  TextField(
             style: TextStyle(
-              color: Colors.white,
+              color: Colors.black,
             ),
             decoration: InputDecoration(
               border: InputBorder.none,
@@ -85,7 +85,7 @@ class _SigninScreenState extends State<SigninScreen> {
               ]),
           height: 60.0,
           child:  TextField(
-            style: TextStyle(color: Colors.white),
+            style: TextStyle(color: Colors.black),
             obscureText: true,
             decoration: InputDecoration(
               border: InputBorder.none,
@@ -232,68 +232,83 @@ class _SigninScreenState extends State<SigninScreen> {
     const google = 'assets/iconGoogle.png';
     return SafeArea(
       child: Scaffold(
-        appBar: AppBar(
-          backgroundColor: Colors.lightBlueAccent,
-          title: const Text(
-            'DISTANCE-CALCULATOR',
-            style: TextStyle(
-              color: Colors.white,
-              fontWeight: FontWeight.bold,
-              letterSpacing: 1.5,
-              fontSize: 18.0,
-            ),
-          ),
-        ),
-        body: Stack(
-          children: <Widget>[
-            Container(
-              height: double.infinity,
-              width: double.infinity,
-              decoration: const BoxDecoration(color: Colors.white),
-            ),
-            Container(
-              height: double.infinity,
-              child: SingleChildScrollView(
-                padding: const EdgeInsets.symmetric(
-                  horizontal: 40.0,
-                  vertical: 60,
-                ),
-                child: Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: <Widget>[
-                    const Text(
-                      'Sign In',
-                      style: TextStyle(
-                        color: Colors.black87,
-                        fontSize: 30.0,
-                        fontWeight: FontWeight.bold,
+   
+        body: GestureDetector(
+           onTap: () {
+            FocusScopeNode currentFocus = FocusScope.of(context);
+            if (!currentFocus.hasPrimaryFocus) {
+              currentFocus.unfocus();
+            }
+          },
+          child: Stack(
+            children: <Widget>[
+              Container(
+                height: double.infinity,
+                width: double.infinity,
+                decoration: const BoxDecoration(color: Colors.white),
+              ),
+              Container(
+                height: double.infinity,
+                child: SingleChildScrollView(
+                  padding: const EdgeInsets.symmetric(
+                    horizontal: 40.0,
+                    vertical: 60,
+                  ),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: <Widget>[
+                      const Text(
+                        'Sign In',
+                        style: TextStyle(
+                          color: Colors.black87,
+                          fontSize: 30.0,
+                          fontWeight: FontWeight.bold,
+                        ),
                       ),
-                    ),
-                    const SizedBox(
-                      height: 30.0,
-                    ),
-                    _buildEmailTF(),
-                    const SizedBox(
-                      height: 30.0,
-                    ),
-                    _buildPasswordTF(),
-                    _buildForgotPasswordBtn(),
-                    _buildRememberMeCheckbox(),
-                    SizedBox(height: 20,),
-                    _buildLoginBtn(),
-                    _buildSignInWithText(),
-                    Padding(
-                      padding: const EdgeInsets.symmetric(vertical: 30.0),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: <Widget>[
-                          GestureDetector(
-                            onTap: () {},
-                            child: Container(
-                              height: 40.0,
-                              width: 40.0,
-                              decoration: const BoxDecoration(
-                                  // shape: BoxShape.,
+                      const SizedBox(
+                        height: 30.0,
+                      ),
+                      _buildEmailTF(),
+                      const SizedBox(
+                        height: 30.0,
+                      ),
+                      _buildPasswordTF(),
+                      _buildForgotPasswordBtn(),
+                      _buildRememberMeCheckbox(),
+                      SizedBox(height: 20,),
+                      _buildLoginBtn(),
+                      _buildSignInWithText(),
+                      Padding(
+                        padding: const EdgeInsets.symmetric(vertical: 30.0),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                          children: <Widget>[
+                            GestureDetector(
+                              onTap: () {},
+                              child: Container(
+                                height: 40.0,
+                                width: 40.0,
+                                decoration: const BoxDecoration(
+                                    // shape: BoxShape.,
+                                    color: Colors.white,
+                                    boxShadow: [
+                                      BoxShadow(
+                                        color: Colors.black26,
+                                        offset: Offset(0, 2),
+                                        blurRadius: 6.0,
+                                      ),
+                                    ],
+                                    image: DecorationImage(
+                                        fit: BoxFit.fill, image: AssetImage(fb))),
+                              ),
+                            ),
+                            GestureDetector(
+                              onTap: () {},
+                              child: Container(
+                                height: 40.0,
+                                width: 40.0,
+                                decoration: const BoxDecoration(
+                                  // shape: BoxShape.circle,
                                   color: Colors.white,
                                   boxShadow: [
                                     BoxShadow(
@@ -303,40 +318,22 @@ class _SigninScreenState extends State<SigninScreen> {
                                     ),
                                   ],
                                   image: DecorationImage(
-                                      fit: BoxFit.fill, image: AssetImage(fb))),
-                            ),
-                          ),
-                          GestureDetector(
-                            onTap: () {},
-                            child: Container(
-                              height: 40.0,
-                              width: 40.0,
-                              decoration: const BoxDecoration(
-                                // shape: BoxShape.circle,
-                                color: Colors.white,
-                                boxShadow: [
-                                  BoxShadow(
-                                    color: Colors.black26,
-                                    offset: Offset(0, 2),
-                                    blurRadius: 6.0,
-                                  ),
-                                ],
-                                image: DecorationImage(
-                                    fit: BoxFit.fill,
-                                    image: AssetImage(google)),
+                                      fit: BoxFit.fill,
+                                      image: AssetImage(google)),
+                                ),
                               ),
                             ),
-                          ),
-                        ],
+                          ],
+                        ),
                       ),
-                    ),
-                    SizedBox(height: 15.0,),
-                    _buildSignupBtn(),
-                  ],
+                      SizedBox(height: 15.0,),
+                      _buildSignupBtn(),
+                    ],
+                  ),
                 ),
               ),
-            ),
-          ],
+            ],
+          ),
         ),
       ),
     );

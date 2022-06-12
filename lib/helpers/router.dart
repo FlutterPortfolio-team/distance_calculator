@@ -1,4 +1,3 @@
-import 'package:distance_calculator/screens/home_screen.dart';
 import 'package:distance_calculator/screens/map.dart';
 import 'package:distance_calculator/screens/sign_in.dart';
 import 'package:distance_calculator/screens/signup.dart';
