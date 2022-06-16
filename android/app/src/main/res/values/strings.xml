@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Distance Calculator</string> 
+    <string name="facebook_app_id">749165536129164</string>
+    <string name="fb_login_protocol_scheme">fb749165536129164</string>
+    <string name="facebook_client_token">08298c12416fd5c2e627ad67e462ea47</string>
+</resources>

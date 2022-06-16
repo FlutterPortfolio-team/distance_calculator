@@ -1,4 +1,8 @@
+import 'dart:async';
+
 import 'package:distance_calculator/screens/signup.dart';
+import 'package:distance_calculator/services/authentication.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 import '../helpers/router.dart';
@@ -11,6 +15,9 @@ class SigninScreen extends StatefulWidget {
 }
 
 class _SigninScreenState extends State<SigninScreen> {
+  final TextEditingController emailController = TextEditingController();
+  final TextEditingController passwordController = TextEditingController();
+
   bool _rememberMe = false;
   Widget _buildEmailTF() {
     return Column(
@@ -19,7 +26,9 @@ class _SigninScreenState extends State<SigninScreen> {
         const Text(
           'Email',
           style: TextStyle(
-              color: Colors.black87, fontWeight: FontWeight.bold, fontSize: 17.0),
+              color: Colors.black87,
+              fontWeight: FontWeight.bold,
+              fontSize: 17.0),
         ),
         const SizedBox(
           height: 10.0,
@@ -37,10 +46,22 @@ class _SigninScreenState extends State<SigninScreen> {
                 )
               ]),
           height: 60.0,
-          child:  TextField(
+          child: TextFormField(
+            controller: emailController,
             style: TextStyle(
               color: Colors.black,
             ),
+            validator: (value) {
+              if (value!.isEmpty) {
+                return "Please Re-Enter New Password";
+              } else if (value.length < 8) {
+                return "Password must be atleast 8 characters long";
+              } else if (value != passwordController.text.toString()) {
+                return "Password must be same as above";
+              } else {
+                return null;
+              }
+            },
             decoration: InputDecoration(
               border: InputBorder.none,
               contentPadding: EdgeInsets.only(top: 14.0),
@@ -66,7 +87,9 @@ class _SigninScreenState extends State<SigninScreen> {
         const Text(
           'Password',
           style: TextStyle(
-              color: Colors.black87, fontWeight: FontWeight.bold, fontSize: 17.0),
+              color: Colors.black87,
+              fontWeight: FontWeight.bold,
+              fontSize: 17.0),
         ),
         const SizedBox(
           height: 10.0,
@@ -84,7 +107,8 @@ class _SigninScreenState extends State<SigninScreen> {
                 )
               ]),
           height: 60.0,
-          child:  TextField(
+          child: TextField(
+            controller: passwordController,
             style: TextStyle(color: Colors.black),
             obscureText: true,
             decoration: InputDecoration(
@@ -113,7 +137,9 @@ class _SigninScreenState extends State<SigninScreen> {
         child: const Text(
           'Forgot Password ?',
           style: TextStyle(
-              color: Colors.black54, fontWeight: FontWeight.bold, fontSize: 15.0),
+              color: Colors.black54,
+              fontWeight: FontWeight.bold,
+              fontSize: 15.0),
         ),
       ),
     );
@@ -162,7 +188,21 @@ class _SigninScreenState extends State<SigninScreen> {
             backgroundColor: MaterialStateProperty.all(Colors.blue.shade400)),
         onPressed: (() {
           FocusScope.of(context).unfocus();
-            Navigator.of(context).pushNamed(Routes.homeRoute);
+          // Navigator.of(context).pushNamed(Routes.homeRoute);
+          Auth(FirebaseAuth.instance).loginWithEmailAndPassword(
+              email: emailController.text.trim(),
+              password: passwordController.text.trim(),
+              context: context);
+          final timer = Timer.periodic(
+            const Duration(seconds: 3),
+            (_) => null,
+          );
+          setState(() {
+            if (Auth(FirebaseAuth.instance).user.emailVerified) {
+              timer.cancel();
+              Navigator.of(context).pushNamed(Routes.homeRoute);
+            }
+          });
         }),
         child: const Text(
           'LOGIN',
@@ -189,7 +229,9 @@ class _SigninScreenState extends State<SigninScreen> {
         Text(
           'Sign in with',
           style: TextStyle(
-              color: Colors.black54,fontWeight: FontWeight.bold, fontSize: 15.0),
+              color: Colors.black54,
+              fontWeight: FontWeight.bold,
+              fontSize: 15.0),
         ),
       ],
     );
@@ -202,7 +244,7 @@ class _SigninScreenState extends State<SigninScreen> {
             MaterialPageRoute(builder: ((context) => const SignupScreen())));
       },
       child: RichText(
-        text:  TextSpan(
+        text: TextSpan(
           children: [
             TextSpan(
               text: 'Don\'t have an Account?',
@@ -232,9 +274,8 @@ class _SigninScreenState extends State<SigninScreen> {
     const google = 'assets/iconGoogle.png';
     return SafeArea(
       child: Scaffold(
-   
         body: GestureDetector(
-           onTap: () {
+          onTap: () {
             FocusScopeNode currentFocus = FocusScope.of(context);
             if (!currentFocus.hasPrimaryFocus) {
               currentFocus.unfocus();
@@ -275,7 +316,9 @@ class _SigninScreenState extends State<SigninScreen> {
                       _buildPasswordTF(),
                       _buildForgotPasswordBtn(),
                       _buildRememberMeCheckbox(),
-                      SizedBox(height: 20,),
+                      SizedBox(
+                        height: 20,
+                      ),
                       _buildLoginBtn(),
                       _buildSignInWithText(),
                       Padding(
@@ -284,7 +327,10 @@ class _SigninScreenState extends State<SigninScreen> {
                           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                           children: <Widget>[
                             GestureDetector(
-                              onTap: () {},
+                              onTap: () {
+                                Auth(FirebaseAuth.instance)
+                                    .signInWithFacebook(context);
+                              },
                               child: Container(
                                 height: 40.0,
                                 width: 40.0,
@@ -299,11 +345,15 @@ class _SigninScreenState extends State<SigninScreen> {
                                       ),
                                     ],
                                     image: DecorationImage(
-                                        fit: BoxFit.fill, image: AssetImage(fb))),
+                                        fit: BoxFit.fill,
+                                        image: AssetImage(fb))),
                               ),
                             ),
                             GestureDetector(
-                              onTap: () {},
+                              onTap: () {
+                                Auth(FirebaseAuth.instance)
+                                    .signInWithGoogle(context);
+                              },
                               child: Container(
                                 height: 40.0,
                                 width: 40.0,
@@ -326,7 +376,9 @@ class _SigninScreenState extends State<SigninScreen> {
                           ],
                         ),
                       ),
-                      SizedBox(height: 15.0,),
+                      SizedBox(
+                        height: 15.0,
+                      ),
                       _buildSignupBtn(),
                     ],
                   ),

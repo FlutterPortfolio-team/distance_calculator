@@ -1,3 +1,8 @@
+import 'dart:async';
+
+import 'package:distance_calculator/services/authentication.dart';
+import 'package:distance_calculator/utils/show_snackb.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
 import '../helpers/router.dart';
@@ -10,6 +15,15 @@ class SignupScreen extends StatefulWidget {
 }
 
 class _SignupScreenState extends State<SignupScreen> {
+  final TextEditingController emailController = TextEditingController();
+  String password = '';
+  final TextEditingController passwordController = TextEditingController();
+  final TextEditingController confirmPasswordController =
+      TextEditingController();
+  bool isEmailVerified = false;
+  // bool canResendEmail = false;
+  Timer? timer;
+
   Widget _buildFullNameTS() {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -17,7 +31,9 @@ class _SignupScreenState extends State<SignupScreen> {
         const Text(
           'Full Name',
           style: TextStyle(
-              color: Colors.black87, fontWeight: FontWeight.bold, fontSize: 17.0),
+              color: Colors.black87,
+              fontWeight: FontWeight.bold,
+              fontSize: 17.0),
         ),
         const SizedBox(
           height: 10.0,
@@ -35,7 +51,7 @@ class _SignupScreenState extends State<SignupScreen> {
                 )
               ]),
           height: 60.0,
-          child:  TextField(
+          child: TextField(
             style: TextStyle(
               color: Colors.black45,
             ),
@@ -64,7 +80,9 @@ class _SignupScreenState extends State<SignupScreen> {
         const Text(
           'Phone No',
           style: TextStyle(
-              color: Colors.black87, fontWeight: FontWeight.bold, fontSize: 17.0),
+              color: Colors.black87,
+              fontWeight: FontWeight.bold,
+              fontSize: 17.0),
         ),
         const SizedBox(
           height: 10.0,
@@ -82,7 +100,7 @@ class _SignupScreenState extends State<SignupScreen> {
                 )
               ]),
           height: 60.0,
-          child:  TextField(
+          child: TextField(
             style: TextStyle(
               color: Colors.black45,
             ),
@@ -111,7 +129,9 @@ class _SignupScreenState extends State<SignupScreen> {
         const Text(
           'Email',
           style: TextStyle(
-              color: Colors.black87, fontWeight: FontWeight.bold, fontSize: 17.0),
+              color: Colors.black87,
+              fontWeight: FontWeight.bold,
+              fontSize: 17.0),
         ),
         const SizedBox(
           height: 10.0,
@@ -129,7 +149,8 @@ class _SignupScreenState extends State<SignupScreen> {
                 )
               ]),
           height: 60.0,
-          child:  TextField(
+          child: TextField(
+            controller: emailController,
             style: TextStyle(
               color: Colors.black45,
             ),
@@ -158,7 +179,9 @@ class _SignupScreenState extends State<SignupScreen> {
         const Text(
           'Password',
           style: TextStyle(
-              color: Colors.black87, fontWeight: FontWeight.bold, fontSize: 17.0),
+              color: Colors.black87,
+              fontWeight: FontWeight.bold,
+              fontSize: 17.0),
         ),
         const SizedBox(
           height: 10.0,
@@ -176,7 +199,19 @@ class _SignupScreenState extends State<SignupScreen> {
                 )
               ]),
           height: 60.0,
-          child:  TextField(
+          child: TextFormField(
+            controller: passwordController,
+            validator: (value) {
+              password = value!;
+              if (value.isEmpty) {
+                return "Please Enter New Password";
+              } else if (value.length < 8) {
+                return "Password must be atleast 8 characters long";
+              } else {
+                return null;
+              }
+            },
+            onChanged: ((value) => password = value),
             style: TextStyle(
               color: Colors.black45,
             ),
@@ -206,7 +241,9 @@ class _SignupScreenState extends State<SignupScreen> {
         const Text(
           'Confirm Password',
           style: TextStyle(
-              color: Colors.black87, fontWeight: FontWeight.bold, fontSize: 17.0),
+              color: Colors.black87,
+              fontWeight: FontWeight.bold,
+              fontSize: 17.0),
         ),
         const SizedBox(
           height: 10.0,
@@ -224,10 +261,24 @@ class _SignupScreenState extends State<SignupScreen> {
                 )
               ]),
           height: 60.0,
-          child:  TextField(
+          child: TextFormField(
+            controller: confirmPasswordController,
             style: TextStyle(
               color: Colors.black45,
             ),
+            validator: (value) {
+              if (value!.isEmpty) {
+                return "Please Re-Enter New Password";
+              } else if (value.length < 8) {
+                return "Password must be atleast 8 characters long";
+              } else if (value != passwordController.text.toString()) {
+                passwordController.clear();
+                confirmPasswordController.clear();
+                return "Password must be same as above";
+              } else {
+                return null;
+              }
+            },
             obscureText: true,
             decoration: InputDecoration(
               border: InputBorder.none,
@@ -260,7 +311,20 @@ class _SignupScreenState extends State<SignupScreen> {
             backgroundColor: MaterialStateProperty.all(Colors.blue.shade400)),
         onPressed: (() {
           FocusScope.of(context).unfocus();
-            Navigator.of(context).pushNamed(Routes.homeRoute);
+
+          if (confirmPasswordController.text.toString() !=
+              passwordController.text.toString()) {
+            showSnackBar(context, "Password must be same as above");
+            passwordController.clear();
+            confirmPasswordController.clear();
+            // return "Password must be same as above";
+          } else {
+            Auth(FirebaseAuth.instance).signUpWithEmailAndPassword(
+                email: emailController.text.trim(),
+                password: confirmPasswordController.text.trim(),
+                context: context);
+          }
+          Navigator.of(context).pushNamed(Routes.loginRoute);
         }),
         child: const Text(
           'REGISTER',
@@ -281,11 +345,10 @@ class _SignupScreenState extends State<SignupScreen> {
       },
       child: GestureDetector(
         onTap: () {
-           Navigator.of(context).pushNamed(Routes.loginRoute);
-        } ,
+          Navigator.of(context).pushNamed(Routes.loginRoute);
+        },
         child: RichText(
-          text:  TextSpan(
-          
+          text: TextSpan(
             children: [
               TextSpan(
                 text: 'Have an Account?',
@@ -325,7 +388,7 @@ class _SignupScreenState extends State<SignupScreen> {
             Container(
               height: double.infinity,
               width: double.infinity,
-              decoration:  BoxDecoration(color: Colors.white),
+              decoration: BoxDecoration(color: Colors.white),
             ),
             Container(
               height: double.infinity,
