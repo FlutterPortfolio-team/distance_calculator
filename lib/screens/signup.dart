@@ -1,6 +1,6 @@
 import 'dart:async';
 
-import 'package:distance_calculator/services/authentication.dart';
+import 'package:distance_calculator/services/auth/authentication.dart';
 import 'package:distance_calculator/utils/show_snackb.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';

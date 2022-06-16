@@ -1,5 +1,5 @@
 // import 'package:distance_calculator/constants.dart';
-import 'package:distance_calculator/utils/networking.dart';
+import 'package:distance_calculator/services/networking.dart';
 import 'package:distance_calculator/utils/constants.dart';
 import 'package:flutter/material.dart';
 import 'package:geocoding/geocoding.dart';

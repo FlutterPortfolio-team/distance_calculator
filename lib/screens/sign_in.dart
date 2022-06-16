@@ -1,7 +1,7 @@
 import 'dart:async';
 
 import 'package:distance_calculator/screens/signup.dart';
-import 'package:distance_calculator/services/authentication.dart';
+import 'package:distance_calculator/services/auth/authentication.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 
@@ -187,7 +187,7 @@ class _SigninScreenState extends State<SigninScreen> {
                 borderRadius: BorderRadius.circular(30.0))),
             backgroundColor: MaterialStateProperty.all(Colors.blue.shade400)),
         onPressed: (() {
-          FocusScope.of(context).unfocus();
+          // FocusScope.of(context).unfocus();
           // Navigator.of(context).pushNamed(Routes.homeRoute);
           Auth(FirebaseAuth.instance).loginWithEmailAndPassword(
               email: emailController.text.trim(),

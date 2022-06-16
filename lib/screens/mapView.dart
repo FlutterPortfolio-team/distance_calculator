@@ -1,5 +1,5 @@
-import 'package:distance_calculator/utils/loaction_service.dart';
-import 'package:distance_calculator/widget/textField.dart';
+import 'package:distance_calculator/services/loaction_service.dart';
+import 'package:distance_calculator/widget/text_field.dart';
 import 'package:flutter/material.dart';
 import 'package:geolocator/geolocator.dart';
 import 'package:google_maps_flutter/google_maps_flutter.dart';

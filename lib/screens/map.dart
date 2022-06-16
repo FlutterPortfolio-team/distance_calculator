@@ -6,7 +6,7 @@ import 'package:google_maps_flutter/google_maps_flutter.dart';
 
 import 'dart:math' show cos, sqrt, asin;
 
-import '../utils/secrets.dart';
+import '../services/auth/secrets.dart';
 
 
 
@@ -281,7 +281,7 @@ class _MapViewState extends State<MapView> {
   ) async {
     polylinePoints = PolylinePoints();
     PolylineResult result = await polylinePoints.getRouteBetweenCoordinates(
-      Secrets.API_KEY, // Google Maps API Key
+      Secrets.myKey, // Google Maps API Key
       PointLatLng(startLatitude, startLongitude),
       PointLatLng(destinationLatitude, destinationLongitude),
       travelMode: TravelMode.transit,
